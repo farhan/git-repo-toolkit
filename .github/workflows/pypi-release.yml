@@ -24,10 +24,13 @@ jobs:
         run: pip install setuptools wheel
 
       - name: Build package
-        run: python setup.py sdist bdist_wheel
+        run: |
+          ls
+          pwd
+          python setup.py sdist bdist_wheel
 
       - name: Publish to PyPi
-        uses: pypa/gh-action-pypi-publish@release/v1
+        uses: pypa/gh-action-pypi-publish@master
         with:
           user: __token__
           password: ${{ secrets.MY_PYPI_UPLOAD_TOKEN }}
